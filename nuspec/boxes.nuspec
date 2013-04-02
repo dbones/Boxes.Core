@@ -11,8 +11,16 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Boxes is a package discovery and isolation framework for building compositional applications using the .NET Framework.</description>
         <summary>Boxes is a package discovery and isolation framework for building compositional applications using the .NET Framework.</summary>
-        <copyright />
+        <copyright>Copyright 2012 - 2013 dbones.co.uk (David Rundle)</copyright>
         <language>es-US</language>
         <tags>Composition Plugin Module Modular Package Bundle Isolated</tags>
     </metadata>
+    <files>
+        <file src="src\Boxes.Core\bin\Release\Boxes.Core.dll" target="lib\net40" />
+		<file src="src\Boxes.Core\bin\Release\Boxes.Core.pdb" target="lib\net40" />
+		<file src="src\Boxes.Core\bin\Release\Boxes.Core.XML" target="lib\net40" />
+		<file src="src\Boxes.Core\bin\Release\BoxesManifest.xsd" target="" />
+		<file src="nuspec\license.txt" target="" />
+		<file src="nuspec\Apache License 2.0.txt" target="" />
+    </files>
 </package>
