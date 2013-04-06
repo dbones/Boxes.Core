@@ -21,6 +21,10 @@ namespace Boxes.Loading
 
     public abstract class LoaderBase : ILoader
     {
+        /// <summary>
+        /// The Global list of loaded assemblies, these assemblies are SHARED
+        /// between the packages and main program
+        /// </summary>
         protected readonly IDictionary<Module, Assembly> Loaded;
 
         protected LoaderBase()

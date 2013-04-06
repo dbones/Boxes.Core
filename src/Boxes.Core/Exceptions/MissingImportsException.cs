@@ -33,6 +33,14 @@ namespace Boxes.Exceptions
             DependenciesNotPresent = dependenciesNotPresent;
         }
 
+        public override string Message
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

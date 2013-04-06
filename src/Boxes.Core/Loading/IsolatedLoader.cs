@@ -67,15 +67,17 @@ namespace Boxes.Loading
             {
                 var internalAssembly = package.GetInternalAssembly(required);
                 internalAssembly.LoadFromFile();
+                //note we do not add this to the Global list of Loaded Assemblies.
                 return internalAssembly.Assembly;    
             }
 
-            //try exposing (this one should really not need to be run)
+            //try exposing (this one should really not need to be run. as these are loaded directly)
             package = _packageRegistry.GetPackageExposing(required);
             if (package != null)
             {
                 var assemblyReference = package.GetInternalAssembly(required);
                 assemblyReference.LoadFromFile();
+                Loaded.Add(assemblyReference.Module, assemblyReference.Assembly);
                 return assemblyReference.Assembly;
             }
 

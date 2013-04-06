@@ -35,7 +35,7 @@ namespace Boxes.Test
                     return new Context<PackageRegistry>(registry);
                 });
 
-            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader()));
+            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader(ctx.Sut)));
             Assert(ctx => ctx.Sut.Packages.Count() == 1);
             Assert(ctx => ctx.Sut.Packages.Select(x => !x.CanLoad).Count() == 1);
             Assert(ctx => !ctx.Sut.Packages.SelectMany(x => x.LoadedAssemblies).Any());
@@ -59,7 +59,7 @@ namespace Boxes.Test
 
             Action(ctx =>
                    {
-                       ctx.Sut.LoadPackages(new DefaultLoader());
+                       ctx.Sut.LoadPackages(new DefaultLoader(ctx.Sut));
                        Util.ForceLoadOfInternals(ctx.Sut);
                    });
 
@@ -88,7 +88,7 @@ namespace Boxes.Test
 
             Action(ctx =>
                    {
-                       ctx.Sut.LoadPackages(new DefaultLoader());
+                       ctx.Sut.LoadPackages(new DefaultLoader(ctx.Sut));
                        Util.ForceLoadOfInternals(ctx.Sut);
                    });
 
@@ -116,7 +116,7 @@ namespace Boxes.Test
 
             Action(ctx =>
                    {
-                       ctx.Sut.LoadPackages(new DefaultLoader());
+                       ctx.Sut.LoadPackages(new DefaultLoader(ctx.Sut));
                        Util.ForceLoadOfInternals(ctx.Sut);
                    });
 

@@ -35,7 +35,7 @@ namespace Boxes.Test
                     return new Context<PackageRegistry>(registry);
                 });
 
-            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader()));
+            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader(ctx.Sut)));
             Assert(ctx => ctx.Sut.Packages.Count() == 1);
             Assert(ctx => ctx.Sut.Packages.SelectMany(x => x.LoadedAssemblies).Count() == 1);
             Assert(ctx => AppDomain.CurrentDomain.GetAssemblies().Count(x => x.GetName().Name.ToLower().Contains("test.box")) == 1);
@@ -56,7 +56,7 @@ namespace Boxes.Test
                     return new Context<PackageRegistry>(registry);
                 });
 
-            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader()));
+            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader(ctx.Sut)));
             Assert(ctx => ctx.Sut.Packages.Count() == 2);
             Assert(ctx => ctx.Sut.Packages.SelectMany(x => x.LoadedAssemblies).Count() == 2);
             Assert(ctx => AppDomain.CurrentDomain.GetAssemblies().Count(x => x.GetName().Name.ToLower().Contains("test.box")) == 2);

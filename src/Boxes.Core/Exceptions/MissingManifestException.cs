@@ -36,6 +36,14 @@ namespace Boxes.Exceptions
             Package = package;
         }
 
+        public override string Message
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
         public override string ToString()
         {
             return

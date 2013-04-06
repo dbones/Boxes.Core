@@ -30,6 +30,14 @@ namespace Boxes.Exceptions
             _ns = ns;
         }
 
+        public override string Message
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
         public override string ToString()
         {
             return string.Format("Cannot read {0}, as there was no reader registered for the following namespace: {1}", _fileName, _ns);
