@@ -25,7 +25,7 @@ namespace Boxes.Loading
         private readonly PackageRegistry _packageRegistry;
 
         /// <summary>
-        /// create a isolated loader, pass in an instance
+        /// create a default loader, pass in an instance
         /// </summary>
         /// <param name="packageRegistry">the package registry to work with</param>
         public DefaultLoader(PackageRegistry packageRegistry)

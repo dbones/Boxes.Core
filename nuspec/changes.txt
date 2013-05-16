@@ -1,0 +1,10 @@
+0.2.x
+==============
+Fixed #3 - Assembly Isolation
+increased unit tests
+improved nuget package information
+
+0.1.x
+==============
+Inital release
+isolated unit tests (that took a while)

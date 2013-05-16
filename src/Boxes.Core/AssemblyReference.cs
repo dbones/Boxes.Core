@@ -61,7 +61,11 @@ namespace Boxes
         {
             if (Assembly== null)
             {
-                Assembly = Assembly.Load(File.ContentsAsBytes);
+                Assembly = Assembly.LoadFile(File.FullName);
+                //is it possible to use the following line, and supply 
+                //some form of location meta-data, as this will allow
+                //to abstract out the folder dir and use zipfiles/network streams/etc
+                //Assembly = Assembly.Load(File.ContentsAsBytes); 
             }
         }
 

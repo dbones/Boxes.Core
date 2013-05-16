@@ -53,6 +53,7 @@ namespace Boxes.Loading
 
         protected virtual void LoadAssembly(AssemblyReference assemblyReference)
         {
+            //todo: see if we need to say, "are you already loaded?"
             Assembly assembly;
             if (Loaded.TryGetValue(assemblyReference.Module, out assembly))
             {

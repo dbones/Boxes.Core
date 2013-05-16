@@ -48,7 +48,9 @@ namespace Boxes.Loading
 
             //you can only export a single version of an assembly
             //the internal dependency can have a different version.
-            
+            //Except, and only, if there is an Assembly already in 
+            //the loaded list.
+
             //the fastest order should be: importing, internal, exporting
             //the exporting should already be loaded.
 
@@ -58,11 +60,10 @@ namespace Boxes.Loading
             {
                 return alreadyLoaded;
             }
-            
-            Package package;
+
             //try internal
             AssemblyName requestor = args.RequestingAssembly.GetName();
-            package = _packageRegistry.GetPackageExposing(requestor);
+            Package package = _packageRegistry.GetPackageExposing(requestor);
             if (package != null)
             {
                 var internalAssembly = package.GetInternalAssembly(required);
@@ -89,4 +90,5 @@ namespace Boxes.Loading
             AppDomain.CurrentDomain.AssemblyResolve -= CurrentDomainAssemblyResolve;
         }
     }
+
 }

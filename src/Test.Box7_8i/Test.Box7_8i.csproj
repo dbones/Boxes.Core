@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE058B2C-3AFF-41F3-A9B1-8EEDD0EB947C}</ProjectGuid>
+    <ProjectGuid>{C8122482-AD13-4CFA-AEC6-6109AF593CD5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test.Box5_6_1</RootNamespace>
-    <AssemblyName>Test.Box5_6_1</AssemblyName>
+    <RootNamespace>Test.Box7_8i</RootNamespace>
+    <AssemblyName>Test.Box7_8i</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AwesomeClass.cs" />
+    <Compile Include="Box7.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,15 +49,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Test.Box1\Test.Box1.csproj">
-      <Project>{cc2cabbb-39df-462a-80e2-9e8e131f399c}</Project>
-      <Name>Test.Box1</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Test.Box6_2_1\Test.Box6_2_1.csproj">
-      <Project>{122fe03e-b7a6-4c92-8584-f96ab7779005}</Project>
-      <Name>Test.Box6_2_1</Name>
-      <Private>False</Private>
+    <ProjectReference Include="..\Test.Box8\Test.Box8.csproj">
+      <Project>{427fce1e-f90e-4835-afaa-f8d447e884f7}</Project>
+      <Name>Test.Box8</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -75,10 +75,6 @@
       <Project>{b11a3088-c91d-4708-9faa-aa932c716140}</Project>
       <Name>Test.Box3_1</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Test.Box4_5i\Test.Box4_5i.csproj">
-      <Project>{aba0eb27-814f-44d5-b187-07ee6541a677}</Project>
-      <Name>Test.Box4_5i</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Test.Box5_6_1\Test.Box5_6_1.csproj">
       <Project>{ae058b2c-3aff-41f3-a9b1-8eedd0eb947c}</Project>
       <Name>Test.Box5_6_1</Name>

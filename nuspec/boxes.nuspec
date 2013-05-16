@@ -21,6 +21,8 @@
 		<file src="src\Boxes.Core\bin\Release\Boxes.Core.XML" target="lib\net40" />
 		<file src="src\Boxes.Core\bin\Release\BoxesManifest.xsd" target="" />
 		<file src="nuspec\license.txt" target="" />
+		<file src="nuspec\changes.txt" target="" />
+		<file src="nuspec\ReadMe.txt" target="" />
 		<file src="nuspec\Apache License 2.0.txt" target="" />
     </files>
 </package>
