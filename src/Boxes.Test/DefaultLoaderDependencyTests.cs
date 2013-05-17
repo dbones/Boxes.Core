@@ -128,7 +128,7 @@ namespace Boxes.Test
 
 
         [Test]
-        public void IsolatedDependency()
+        public void SharedDependency()
         {
             CopyPackage("test.Box4_8i");
             CopyPackage("test.Box7_8i");
