@@ -1,3 +1,7 @@
+0.3.x
+==============
+Licence file update
+
 0.2.x
 ==============
 Fixed #3 - Assembly Isolation

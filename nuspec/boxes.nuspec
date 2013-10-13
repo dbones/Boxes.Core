@@ -4,14 +4,14 @@
         <id>Boxes.Core</id>
         <version>0.0.0</version>
         <title>Boxes Core</title>
-        <authors>David Rundle</authors>
+        <authors>Boxes Contrib Team</authors>
         <owners>dbones.co.uk</owners>
         <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
         <projectUrl>https://github.com/boxes-project</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Boxes is a package discovery and isolation framework for building compositional applications using the .NET Framework.</description>
         <summary>Boxes is a package discovery and isolation framework for building compositional applications using the .NET Framework.</summary>
-        <copyright>Copyright 2012 - 2013 dbones.co.uk (David Rundle)</copyright>
+        <copyright>Copyright 2012 - 2013 dbones.co.uk & Boxes Contrib Team</copyright>
         <language>es-US</language>
         <tags>Composition Plugin Module Modular Package Bundle Isolated</tags>
     </metadata>
