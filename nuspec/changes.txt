@@ -1,6 +1,7 @@
 0.3.x
 ==============
-Licence file update
+version number sync
+updated nuget package (icon, authors)
 
 0.2.x
 ==============
