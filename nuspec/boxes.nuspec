@@ -6,7 +6,7 @@
         <title>Boxes Core</title>
         <authors>Boxes Contrib Team</authors>
         <owners>dbones.co.uk</owners>
-		<iconUrl>http://docs.dbones.co.uk/GetFile.aspx?File=/boxes/logo/boxes48.jpg</iconUrl>
+		<iconUrl>http://docs.dbones.co.uk/GetFile.aspx?File=/boxes/logo/boxeslogo.jpg</iconUrl>
         <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
         <projectUrl>https://github.com/boxes-project</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
