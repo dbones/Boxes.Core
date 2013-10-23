@@ -1,4 +1,4 @@
-// Copyright 2012 - 2013 dbones.co.uk (David Rundle)
+// Copyright 2012 - 2013 dbones.co.uk
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,7 +27,8 @@ namespace Boxes.Test
 
         public static IEnumerable<Assembly> BoxesLoadedAssemblies()
         {
-            return AppDomain.CurrentDomain.GetAssemblies().Where(x => x.GetName().Name.ToLower().Contains("test.box"));
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            return assemblies.Where(x => x.GetName().Name.ToLower().Contains("test.box"));
         }
 
         /// <summary>
@@ -36,11 +37,64 @@ namespace Boxes.Test
         /// <param name="packageRegistry"></param>
         public static void ForceLoadOfInternals(PackageRegistry packageRegistry)
         {
-            packageRegistry
+            var assemblies = packageRegistry
                 .Packages
+                .SelectMany(x => x.LoadedAssemblies);
+
+            var types = assemblies.SelectMany(x => x.GetTypes());
+
+            foreach (var type in types)
+            {
+                try
+                {
+                    var obj = Activator.CreateInstance(type);
+                }
+// ReSharper disable EmptyGeneralCatchClause
+                catch (Exception)
+// ReSharper restore EmptyGeneralCatchClause
+                {
+                    //do not care, just wanted to force the load 
+                    //of the assembly and of it dependent assemblies
+                }
+                
+            }
+        }
+
+
+        public static ObjectInstance CreateObject(this PackageRegistry packageRegistry, string className)
+        {
+            Type type = packageRegistry.Packages
                 .SelectMany(x => x.LoadedAssemblies)
-                .Select(x => x.GetExportedTypes())
-                .Force();
+                .SelectMany(x => x.GetExportedTypes())
+                .First(x => x.Name == className);
+
+            object instance = Activator.CreateInstance(type);
+            return new ObjectInstance(instance);
         }
     }
+
+
+    public class ObjectInstance
+    {
+        private readonly object _instance;
+        Type _type;
+
+        public ObjectInstance(object instance)
+        {
+            if (instance == null) throw new ArgumentNullException("instance");
+            _instance = instance;
+            _type = instance.GetType();
+        }
+
+        public T GetPropertyValue<T>(string methodName)
+        {
+            PropertyInfo propertyInfo = _type.GetProperty(methodName, BindingFlags.Static | BindingFlags.Public | BindingFlags.Instance);
+            MethodInfo methodInfo = propertyInfo.GetGetMethod();
+            var result = methodInfo.Invoke(_instance, new object[] { });
+            return (T)result;
+        }
+    }
+
+
+
 }

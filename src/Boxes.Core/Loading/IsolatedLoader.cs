@@ -1,4 +1,4 @@
-// Copyright 2012 - 2013 dbones.co.uk (David Rundle)
+// Copyright 2012 - 2013 dbones.co.uk
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -48,7 +48,9 @@ namespace Boxes.Loading
 
             //you can only export a single version of an assembly
             //the internal dependency can have a different version.
-            
+            //Except, and only, if there is an Assembly already in 
+            //the loaded list.
+
             //the fastest order should be: importing, internal, exporting
             //the exporting should already be loaded.
 
@@ -58,24 +60,25 @@ namespace Boxes.Loading
             {
                 return alreadyLoaded;
             }
-            
-            Package package;
+
             //try internal
             AssemblyName requestor = args.RequestingAssembly.GetName();
-            package = _packageRegistry.GetPackageExposing(requestor);
+            Package package = _packageRegistry.GetPackageExposing(requestor);
             if (package != null)
             {
                 var internalAssembly = package.GetInternalAssembly(required);
                 internalAssembly.LoadFromFile();
+                //note we do not add this to the Global list of Loaded Assemblies.
                 return internalAssembly.Assembly;    
             }
 
-            //try exposing (this one should really not need to be run)
+            //try exposing (this one should really not need to be run. as these are loaded directly)
             package = _packageRegistry.GetPackageExposing(required);
             if (package != null)
             {
                 var assemblyReference = package.GetInternalAssembly(required);
                 assemblyReference.LoadFromFile();
+                Loaded.Add(assemblyReference.Module, assemblyReference.Assembly);
                 return assemblyReference.Assembly;
             }
 
@@ -87,4 +90,5 @@ namespace Boxes.Loading
             AppDomain.CurrentDomain.AssemblyResolve -= CurrentDomainAssemblyResolve;
         }
     }
+
 }

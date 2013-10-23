@@ -1,4 +1,4 @@
-// Copyright 2012 - 2013 dbones.co.uk (David Rundle)
+// Copyright 2012 - 2013 dbones.co.uk
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,6 +34,14 @@ namespace Boxes.Exceptions
         public MissingManifestException(Package package)
         {
             Package = package;
+        }
+
+        public override string Message
+        {
+            get
+            {
+                return ToString();
+            }
         }
 
         public override string ToString()

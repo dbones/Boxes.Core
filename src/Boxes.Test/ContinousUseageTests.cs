@@ -1,4 +1,4 @@
-// Copyright 2012 - 2013 dbones.co.uk (David Rundle)
+// Copyright 2012 - 2013 dbones.co.uk
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@ namespace Boxes.Test
                     string path = TestInfo.ModulesDirectory;
                     var registry = new PackageRegistry();
                     registry.DiscoverPackages(new PackageScanner(path));
-                    ILoader loader = new DefaultLoader();
+                    ILoader loader = new DefaultLoader(registry);
 
                     dynamic ctx = new Context<PackageRegistry>(registry);
                     ctx.Loader = loader;
@@ -66,7 +66,7 @@ namespace Boxes.Test
                     return new Context<PackageRegistry>(registry);
                 });
 
-            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader()));
+            Action(ctx => ctx.Sut.LoadPackages(new DefaultLoader(ctx.Sut)));
             Assert(ctx => ctx.Sut.Packages.Count() == 2);
             Assert(ctx => ctx.Sut.Packages.SelectMany(x => x.LoadedAssemblies).Count() == 2);
             Assert(ctx => AppDomain.CurrentDomain.GetAssemblies().Count(x => x.GetName().Name.ToLower().Contains("test.box")) == 2);

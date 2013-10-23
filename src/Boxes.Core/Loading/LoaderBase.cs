@@ -1,4 +1,4 @@
-// Copyright 2012 - 2013 dbones.co.uk (David Rundle)
+// Copyright 2012 - 2013 dbones.co.uk
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,6 +21,10 @@ namespace Boxes.Loading
 
     public abstract class LoaderBase : ILoader
     {
+        /// <summary>
+        /// The Global list of loaded assemblies, these assemblies are SHARED
+        /// between the packages and main program
+        /// </summary>
         protected readonly IDictionary<Module, Assembly> Loaded;
 
         protected LoaderBase()
@@ -49,6 +53,7 @@ namespace Boxes.Loading
 
         protected virtual void LoadAssembly(AssemblyReference assemblyReference)
         {
+            //todo: see if we need to say, "are you already loaded?"
             Assembly assembly;
             if (Loaded.TryGetValue(assemblyReference.Module, out assembly))
             {

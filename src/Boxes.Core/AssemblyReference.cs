@@ -1,4 +1,4 @@
-// Copyright 2012 - 2013 dbones.co.uk (David Rundle)
+// Copyright 2012 - 2013 dbones.co.uk
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -61,7 +61,11 @@ namespace Boxes
         {
             if (Assembly== null)
             {
-                Assembly = Assembly.Load(File.ContentsAsBytes);
+                Assembly = Assembly.LoadFile(File.FullName);
+                //is it possible to use the following line, and supply 
+                //some form of location meta-data, as this will allow
+                //to abstract out the folder dir and use zipfiles/network streams/etc
+                //Assembly = Assembly.Load(File.ContentsAsBytes); 
             }
         }
 
